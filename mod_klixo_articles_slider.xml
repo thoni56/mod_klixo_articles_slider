@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension 
+    type="module" 
+    version="3.0"
+    client="site"
+    method="upgrade"
+>
+    <name>Klixo Articles Slider</name>
+    <creationDate>February 27 2014</creationDate>
+    <author>JF Thier - Klixo.se</author>
+    <copyright>(Copyright (C) 2011-2014 Klixo.se All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>jeff@klixo.se</authorEmail>
+    <authorUrl>http://www.klixo.se</authorUrl>
+    <version>1.3.6</version>
+    <description>MOD_KLIXO_ARTICLES_SLIDER_DESC</description>
+    <files folder="modules/mod_klixo_articles_slider">
+        <filename module="mod_klixo_articles_slider">mod_klixo_articles_slider.php</filename>
+        <filename>mod_klixo_articles_slider.xml</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <folder>assets</folder>
+        <folder>customfields</folder>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <filename>language/en-GB/en-GB.mod_klixo_articles_slider.sys.ini</filename>
+        <filename>language/en-GB/en-GB.mod_klixo_articles_slider.ini</filename>
+    </files>
+    <config>
+        <fields name="params" addfieldpath="/modules/mod_klixo_articles_slider/customfields">
+            <fieldset name="basic">
+                <field name="Spacer1" type="customspacer" default="GENERAL_SETTINGS" BgdColor="#2e8ded" TextColor="#FFF" />   
+                <field 
+                    name="moduleclass_sfx"
+                    type="text" default=""
+                    label="MOD_CLASS_SUFFIX_LABEL"
+                    description="MOD_CLASS_SUFFIX_DESC" />
+                <field name="jquery" type="radio" default="1" label="INCLUDE_JQUERY_LABEL" description="INCLUDE_JQUERY_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="categoryId" type="category" multiple="true"
+                       size="10"
+                       default="" extension="com_content" label="JCATEGORY" description="CAT_DESC" />               
+                <field name="featured" type="list" default="show" label="ARTICLES_FILTER_LABEL" description="ARTICLES_FILTER_DESC">
+                    <option value="show">BOTH</option>
+                    <option value="only">FRONTPAGE_ONLY</option>
+                    <option value="hide">NO_FRONTPAGE</option>
+                </field>
+                <field name="count" type="text" default="6" label="SLIDES_COUNT_LABEL" description="SLIDES_COUNT_DESC" />
+                <field name="ordering" type="list" default="a.ordering" label="SORT_LABEL" description="SORT_METHOD_DESC">
+                    <option value="a.ordering">SORT_ORDERING</option>
+                    <option value="a.title">SORT_TITLE</option>
+                    <option value="a.created">SORT_DATE</option>
+                    <option value="a.modified">SORT_MOD</option>
+                    <option value="rand()">SORT_RANDOM</option>
+                </field>
+                <field name="sort_order" type="list" default="ASC" label="SORT_UP_D_LABEL" description="SORT_UP_D_DESC">
+                    <option value="ASC">SORT_ASC</option>
+                    <option value="DESC">SORT_DESC</option>
+                </field>
+                <field name="slideShow_width" type="text" default="600" label="SLIDE_SHOW_W_LABEL" description="SLIDE_SHOW_W_DESC" />
+                <field name="slideShow_height" type="text" default="200" label="SLIDE_SHOW_H_LABEL" description="SLIDE_SHOW_H_DESC" />
+                <field name="css_scaling" type="list" default="0" label="CSS_SCALING_LABEL" description="CSS_SCALING_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="slideShow_background" type="color" default="" label="BGD_COLOR_LABEL" description="BGD_COLOR_DESC" />   
+                <!-- Content settings -->   
+                <field name="Spacer2" type="customspacer" default="CONTENT_SETTINGS" BgdColor="#2e8ded" TextColor="#FFF" />
+                <field name="show_title" type="list" default="1" label="SHOW_TITLE_LABEL" description="SHOW_TITLE_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="title_color" type="color" default="#666666" label="TITLE_COLOR_LABEL" description="TITLE_COLOR_DESC" />
+                <field name="title_font_size" type="text" default="16" label="TITLE_FONT_SIZE" description="TITLE_FONT_SIZE_DESC" />
+                <field name="limittitle" type="text" default="30" label="TITLE_MAX_LGT_LABEL" description="TITLE_MAX_LGT_DESC" />
+                <field name="link_title" type="list" default="0" label="TITLE_LINK" description="TITLE_LINK_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="target" type="list" default="_self" label="LINK_LABEL" description="LINK_DESC">
+                    <option value="_blank">NEW_WIN</option>
+                    <option value="_self">SAME_WIN</option>
+                </field>
+                <field name="show_img" type="list" default="1" label="SHOW_IMG_LABEL" description="SHOW_IMG_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="description_color" type="color" default="#000000" label="CONTENT_COLOR_LABEL" description="CONTENT_COLOR_DESC" />
+                <field name="content_font_size" type="text" default="12" label="CONTENT_FONT_SIZE" description="CONTENT_FONT_SIZE_DESC" />
+                <field name="reformat_content" type="list" default="0" label="REFORMAT" description="REFORMAT_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="limit_description" type="text" default="150" label="CONTENT_MAX_LABEL" description="CONTENT_MAX_DESC" />
+                <field name="show_readmore" type="list" default="0" label="SHOW_READ_MORE" description="SHOW_READ_MORE_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="read_more_color" type="color" default="0080FF" label="READ_MORE_COLOR_LABEL" description="READ_MORE_COLOR_DESC" />
+                <field name="ReadMore_font_size" type="text" default="11" label="READ_MORE_FONT_SIZE" description="READ_MORE_FONT_SIZE_DESC" />
+                
+                <!-- Slideshow settings -->
+                <field name="Spacer4" type="customspacer" default="SHOW_SETTINGS" BgdColor="#2e8ded" TextColor="#FFF" />
+                <field name="auto_play" type="list" default="1" label="AUTO_PLAY" description="AUTO_PLAY_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+              <field name="transition" type="list" default="scrollRight"  multiple="true"  size="24"  label="TRANSITIONS_LABEL" description="TRANSITIONS_DESC">
+                    <option value="fade">Fade</option>
+                    <option value="fadeZoom">Fade Zoom</option>
+                    <option value="zoom">Zoom</option>
+                    <option value="shuffle">Shuffle</option>
+                    <option value="toss">Toss</option>
+                    <option value="wipe">Wipe</option>
+                    <option value="cover">Cover</option>
+                    <option value="uncover">Uncover</option>
+                    <option value="blindX">Blind X</option>
+                    <option value="blindY">Blind Y</option>
+                    <option value="blindZ">Blind Z</option>
+                    <option value="growY">Grow Y</option>
+                    <option value="curtainX">Curtain X</option>
+                    <option value="curtainY">Curtain Y</option>
+                    <option value="slideX">Slide X</option>
+                    <option value="slideY">Slide Y</option>
+                    <option value="turnUp">Turn Up</option>
+                    <option value="turnDown">Turn Down</option>
+                    <option value="turnLeft">Turn Left</option>
+                    <option value="turnRight">Turn Right</option>
+                    <option value="scrollRight">Scroll Right</option>
+                    <option value="scrollLeft">Scroll Left</option>
+                    <option value="scrollUp">Scroll Up</option>
+                    <option value="scrollDown">Scroll Down</option>
+                </field>
+                <field name="randomizeEffects" type="list" default="1" label="RANDOM_TRANSITION_LABEL" description="RANDOM_TRANSITION_DESC">   
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="pause" type="list" default="1" label="STOP_OVER_LABEL" description="STOP_OVER_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="timer_speed" type="text" default="3" label="SPEED_LABEL" description="SPEED_DESC" />
+                <field name= "slideshow_speed" type="text" default="1" label="TRANSITION_SPEED_LABEL" description="TRANSITION_SPEED_DESC" />
+    
+                <!-- Navigation -->
+                <field name="Spacer5" type="customspacer" default="NAV_SETTINGS" BgdColor="#2e8ded" TextColor="#FFF" />
+                <field name="prenext_show" type="list" default="1" label="SHOW_NAV_LABEL" description="SHOW_NAV_DESC">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="button_style" type="list" default="hide" label="BTNS_STYLE_LABEL" description="BTNS_STYLE_DESC">
+                    <option value="number">BTNS_NUMBERS</option>
+                    <option value="dots">BTNS_DOTS</option>
+                    <option value="hide">BTNS_NONE</option>
+                </field>
+                <field name="navBarColor" type="color" default="" label="NAVBAR_BGD_LABEL" description="NAVBAR_BGD_DESC" />
+                <field name="navBarTxtColor" type="color" default="#64a6c9" label="NAVBAR_TXT_LABEL" description="NAVBAR_TXT_DESC" />
+                <field name="navBarTxtSelectColor" type="color" default="#e62929" label="NAVBAR_TXT_SELECTED_LABEL" description="NAVBAR_TXT_SELECTED_DESC" />
+               
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="cache" type="list" default="0" label="Caching" description="Caching">
+                    <option value="1">JYes</option>
+                    <option value="0">JNo</option>
+                </field>
+                <field name="cache_time" type="text" default="300" label="Cache time" description="Cache time" />
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server type="extension" priority="1" name="Klixo Updates">http://www.update.klixo.se/updates/klixo_updates_articles_slider.xml</server>
+    </updateservers>
+</extension>

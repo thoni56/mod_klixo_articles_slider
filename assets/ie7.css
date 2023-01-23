@@ -1,0 +1,28 @@
+div.content_slideshow  div.navBar ul {
+    margin : 0 auto;
+    display:block;
+}
+div.content_slideshow  div.navBar ul li{
+    float:left;
+}
+
+
+.slideShow_player div.readmore_button p {
+    color:#FFFFFF;
+    font-size:15px;
+    padding-left:5px;
+    padding-top:10px;
+    width:79px
+}
+
+div.content_slideshow .default div.previous {
+    position: absolute;
+    left:2px;
+    top:0;
+}
+
+.content_slideshow div.navBar div.next {
+    position: absolute;
+    right:2px;
+    top:0;
+}
