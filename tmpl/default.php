@@ -86,7 +86,7 @@ if (count($items) > 0):
         }
         (function($) {
             var KSlideShow;
-            $(window).load(function() {
+            $(window).on("load", function() {
                 KSlideShow = new $.KSlider({
                     fx: '<?php echo $transitionList; ?>',
                     randomizeEffects: '<?php echo $randomizeEffects; ?>',
